@@ -1,0 +1,34 @@
+.start-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-title {
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  font-size: 35px;
+  color: #293264;
+  margin-bottom: 0;
+}
+
+.start-description {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #293264;
+  margin-bottom: 40px;
+}
+
+.start-button {
+  width: 185px;
+  height: 55px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: #F5F7FB;
+  background-color: #4D5B9E;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+}
