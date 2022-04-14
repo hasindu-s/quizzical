@@ -6,7 +6,8 @@ import {nanoid} from 'nanoid';
 import {TailSpin} from 'react-loading-icons';
 import './QnA.css';
 
-function QnA() {
+function QnA({numOfQuestions}) {
+  const [loading, setLoading] = useState(false);
   const [initQuestions, setInitQuestions] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [fetchError, setFetchError] = useState('');
@@ -14,7 +15,8 @@ function QnA() {
   const [marks, setMarks] = useState(0);
 
   function newGame() {
-    fetch('https://opentdb.com/api.php?amount=5&type=multiple')
+    setLoading(true);
+    fetch(`https://opentdb.com/api.php?amount=${numOfQuestions}&type=multiple`)
     .then(response => response.json())
     .then(data => {
       if (data.response_code === 0) {
@@ -22,6 +24,7 @@ function QnA() {
         setMarks(0);
         setFetchError('');
         setInitQuestions(data.results);
+        setLoading(false);
       }        
     })
     .catch(error => setFetchError(error.message));
@@ -88,7 +91,6 @@ function QnA() {
   }
 
   const questionElements = [];
-  const numOfQuestions = 5;
 
   if (questions.length > 0) {
     for (let i = 0; i < numOfQuestions; i++) {
@@ -123,12 +125,20 @@ function QnA() {
 
   const answeringElements =  <button className="qna-button" onClick={answerChecking}>Check answers</button>
 
+  const loadingIcon = 
+    <div className="loading-container">
+      <TailSpin stroke="#4D5B9E" />
+    </div>
+
+  const displayingElements = 
+    <div className="qna-section">
+      {fetchError.length > 0? <Error message={fetchError} /> : questionElements}
+    </div>
+
   return (
     <div className="qna-container">
-      <div className="qna-section">
-        {fetchError.length > 0? <Error message={fetchError} /> : questionElements}
-      </div>
-      {checking? resultElements: answeringElements}      
+      {loading? loadingIcon : displayingElements } 
+      {loading? null : checking? resultElements: answeringElements}       
     </div>
   )
 }

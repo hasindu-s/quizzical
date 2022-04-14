@@ -20,6 +20,9 @@ body {
   width: 600px;
   height: 600px;
   background-color: #F5F7FB;
+  background-image: url("./images/start-yellow-blob.png"), url("./images/start-blue-blob.png");
+  background-position: top right, bottom left;
+  background-repeat: no-repeat, no-repeat;
 }
 
 .bg-yellow-blob {

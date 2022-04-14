@@ -4,12 +4,21 @@ import QnA from './components/QnA';
 
 function App() {
   const [startQuiz, setStartQuiz] = useState(false);  
+  const [numOfQuestions, setNumOfQuestions] = useState(5);
 
   return (
     <div className="App">
       <div className="container">
-        {/* <img className="bg-yellow-blob" src={require("./images/start-yellow-blob.png")} alt="yellow-blob"/> */}
-        {startQuiz? <QnA /> : <Start startQuiz={setStartQuiz} />}
+        {startQuiz? 
+          <QnA 
+            numOfQuestions={numOfQuestions}
+          /> : 
+          <Start 
+            startQuiz={setStartQuiz} 
+            numOfQuestions={numOfQuestions}
+            setNumOfQuestions={setNumOfQuestions}
+          />
+        }
       </div>
     </div>
   );
