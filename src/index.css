@@ -20,12 +20,16 @@ body {
   width: 600px;
   height: 600px;
   background-color: #F5F7FB;
+}
+
+.start-background {
   background-image: url("./images/start-yellow-blob.png"), url("./images/start-blue-blob.png");
   background-position: top right, bottom left;
   background-repeat: no-repeat, no-repeat;
 }
 
-.bg-yellow-blob {
-  display: inline;
-  position: relative;
+.quiz-background {
+  background-image: url("./images/qna-yellow-blob.png"), url("./images/qna-blue-blob.png");
+  background-position: 108% 0%, bottom left;
+  background-repeat: no-repeat, no-repeat;
 }

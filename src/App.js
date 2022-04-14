@@ -6,9 +6,11 @@ function App() {
   const [startQuiz, setStartQuiz] = useState(false);  
   const [numOfQuestions, setNumOfQuestions] = useState(5);
 
+  const styleClasses = `container ${startQuiz? "quiz-background" : "start-background"}`
+
   return (
     <div className="App">
-      <div className="container">
+      <div className={styleClasses}>
         {startQuiz? 
           <QnA 
             numOfQuestions={numOfQuestions}
